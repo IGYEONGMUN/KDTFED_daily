@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      .wrapper {
+        display: grid;
+        width: 100%;
+        height: 100vh;
+        header {
+          grid-row: 1;
+          grid-column: 1 / span 3;
+          background: goldenrod;
+          text-align: center;
+        }
+        menu {
+          border: 1px solid #f00;
+        }
+        section {
+          border: 1px solid rgb(45, 177, 78);
+        }
+        aside {
+          border: 1px solid rgb(79, 51, 184);
+        }
+        footer {
+          grid-row: 3;
+          grid-column: 1 / span 3;
+          background: blueviolet;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrapper">
+      <header>header</header>
+      <menu>menu</menu>
+      <section>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+      </section>
+      <aside>
+        <div>top</div>
+        <div>aside</div>
+        <div>bottom</div>
+      </aside>
+      <footer>footer</footer>
+    </main>
+  </body>
+</html>

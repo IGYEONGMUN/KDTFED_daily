@@ -1,0 +1,106 @@
+<!-- <!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./script.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>노드 리스트</h1>
+    <p>HTML</p>
+    <p>CSS</p>
+    <p>JS</p>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script defer src="./script.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      ul,
+      li {
+        list-style: none;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      body {
+        #container {
+          width: 1200px;
+          margin: 100px auto;
+          #heading {
+            display: flex;
+            gap: 20px;
+            .desc {
+              width: 70%;
+              h2 {
+                margin: 10px 0 20px;
+              }
+              p {
+                margin: 6px 0;
+                &:nth-of-type(2) {
+                  line-height: 140%;
+                }
+              }
+              #order {
+                border: none;
+                padding: 6px 10px;
+                font-size: 16px;
+                border-radius: 8px;
+                cursor: pointer;
+              }
+            }
+            img {
+              width: 200px;
+              border-radius: 8px;
+            }
+          }
+          #orderInfo {
+            margin-top: 50px;
+            padding: 14px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+          }
+        }
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <main id="container">
+      <div id="heading">
+        <div class="img">
+          <img
+            src="https://static.nike.com/a/images/t_PDP_1728_v1/f_auto,q_auto:eco/b24c79dc-427b-4722-9e0c-2ca66c064ecf/G.T.+HUSTLE+3+EP+OLY.png"
+            alt=""
+          />
+        </div>
+        <div class="desc">
+          <h1>상품설명</h1>
+          <h2 id="title">상품명 : 나이키 G.T. 허슬 3 EP 일렉트릭</h2>
+          <p>이중 스택</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis
+            rem accusantium quos ex? Accusamus consequatur, atque sed laboriosam
+            veritatis aliquid est! Repellat atque ab quasi ut beatae earum,
+            dolore numquam! Lorem ipsum dolor sit, amet consectetur adipisicing
+            elit. Harum, eum quisquam. Eius, vitae inventore? Optio mollitia
+            harum quisquam nihil, enim fuga numquam! Explicabo est vero eos
+            magnam suscipit, atque saepe!
+          </p>
+          <button id="order">상품주문하기</button>
+        </div>
+      </div>
+      <div id="orderInfo">주문내역</div>
+    </main>
+  </body>
+</html>

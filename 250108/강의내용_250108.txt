@@ -1,0 +1,6 @@
+.gitignore
+- 대용량 파일
+
+LTS : Long Term Service / Support
+
+firebase

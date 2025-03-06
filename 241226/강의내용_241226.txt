@@ -1,0 +1,78 @@
+*구글링 > 개발자 운영 블로그 > 잘못된 정보 & 상식
+- position : relative > absolute
+- absolute > absolute > absolute
+- relative : top / left
+
+1.Mdn
+https://developer.mozilla.org/ko/
+- mozilla 재단 운영하고 있는 사이트
+- MS, Apple, Google, Meta 
+- log들을 공유 // 곧 폐기될 기능 공유
+- 현재 개발자들이 사용하고 있는 태그, 스타일속성, 자바스크립트에 대한 업데이트 변화 가장 빠르게 업로드되고 있는 사이트
+
+2.w3c School
+- www 컨소시움
+
+html : 
+hn
+p
+br
+hr
+table > tr, td, th, thead, tbody
+ul, ol > li
+form > input, textarea, select, option
+em
+b
+strong
+i
+div
+span
+
+
+
+- block 속성을 가지고 있는 태그
+> 1개의 공간(*한 개의 행)을 모두 사용하는 태그
+
+- inline 속성을 가지고 있는 태그
+> 1개의 공간(*한 개의 행)을 모두 사용하지 않고, 본인의 너비값 만큼만 사용하는 태그
+
+구조 : 특정 영역 > 내부 요소들이 어떤 순서로 정렬되어있는지를 파악
+
+전체선택자
+태그선택자
+아이디선택자
+클래스선택자
+구조선택자
+> 일반구조선택자
+> 형태구조선택자
+문자선택자
+> 전후문자선택자
+속성선택자
+동위선택자
+부정선택자
+상태선택자
+
+일반구조 선택자
+전후문자 선택자
+
+
+
+Font/30px
+
+
+3.Background
+
+Research-Items
+
+Research-Items
+
+Background-Title
+0E1638
+
+0E1323
+
+5.ProgramSolution
+mainIllustration
+
+
+

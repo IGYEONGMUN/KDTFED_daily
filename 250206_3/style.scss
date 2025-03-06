@@ -1,0 +1,49 @@
+@import "./styles/reset.scss";
+@import "./styles/variables.scss";
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
+
+#container {
+  height: 100vh;
+  // background: url(./contents/bg_2.jpg) center/cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  #outer {
+    width: 807px;
+    height: 544px;
+    background: url("./contents/outerbox.png") center/cover no-repeat;
+    position: relative;
+    #inner-contents {
+      display: flex;
+    }
+  }
+}
+
+/*===inner-left===*/
+#inner-left {
+  width: 203px;
+  height: 472px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 26px;
+  border: 1px solid #ccc;
+}
+/*===inner-right===*/
+#inner-right {
+  width: 524px;
+  height: 472px;
+  border: 1px solid #ccc;
+}
+/*===navigtion===*/
+#navigation {
+  position: absolute;
+  top: 20%;
+  right: -69px;
+}

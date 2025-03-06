@@ -1,0 +1,437 @@
+import { API_KEY } from "./env.js";
+//Document Items
+const nowplayingUl = document.querySelector(".nowplaying ul");
+const upcomingUl = document.querySelector(".upcoming ul");
+const topratedUl = document.querySelector(".toprated ul");
+
+// Common URL
+const tmdbCommand = "https://api.themoviedb.org/3";
+
+//Create Element
+const createElement = (movie, index, category) => {
+  const {
+    adult,
+    genre_ids,
+    id,
+    overview,
+    poster_path,
+    release_date,
+    title,
+    vote_average,
+  } = movie;
+
+  const li = document.createElement("li");
+  const moviePoster = document.createElement("div");
+  const movieTitle = document.createElement("div");
+  const movieDesc = document.createElement("div");
+
+  const img = document.createElement("img");
+  img.src = `https://image.tmdb.org/t/p/original/${poster_path}`;
+
+  const ageLimit = document.createElement("span");
+  const movieNum = document.createElement("span");
+  const release = document.createElement("span");
+  const vote = document.createElement("span");
+
+  moviePoster.className = "moviePoster";
+  movieTitle.className = "movieTitle";
+  movieDesc.className = "movieDesc";
+
+  let adultKo = adult === false ? "All" : "18";
+
+  ageLimit.innerText = adultKo;
+  movieNum.innerText = index + 1;
+
+  release.innerText = release_date;
+  vote.innerText = `✨${parseFloat(vote_average).toFixed(2)}`;
+
+  li.className = id;
+  li.setAttribute("data-category", category);
+
+  movieTitle.innerText = title;
+  movieDesc.append(release, vote);
+
+  moviePoster.append(img, ageLimit, movieNum);
+
+  li.append(moviePoster, movieTitle, movieDesc);
+
+  if (category === "nowplaying") {
+    nowplayingUl.appendChild(li);
+  } else if (category === "upcoming") {
+    upcomingUl.appendChild(li);
+  } else if (category === "toprated") {
+    topratedUl.appendChild(li);
+  }
+};
+
+// NowPlaying DB
+const nowPlaying = async () => {
+  const url = `${tmdbCommand}/movie/now_playing?api_key=${API_KEY}&language=ko-KR&page=1`;
+  const response = await fetch(url);
+  const { results } = await response.json();
+  return results;
+};
+
+// UpComing DB
+const upComing = async () => {
+  const url = `${tmdbCommand}/movie/upcoming?api_key=${API_KEY}&language=ko-KR&page=1`;
+  const response = await fetch(url);
+  const { results } = await response.json();
+  return results;
+};
+
+// TopRated DB
+const topRated = async () => {
+  const url = `${tmdbCommand}/movie/top_rated?api_key=${API_KEY}&language=ko-KR&page=1`;
+  const response = await fetch(url);
+  const { results } = await response.json();
+  return results;
+};
+
+//Generes DB
+//TMDB API Refernece -> Movie List
+const movieGeneres = async () => {
+  const url = `${tmdbCommand}/genre/movie/list?api_key=${API_KEY}&language=ko-KR`;
+  const response = await fetch(url);
+  const { genres } = await response.json();
+  return genres;
+};
+
+// Promise DBs
+const getMovies = async () => {
+  const [nowPlayingMovie, upComingMovie, topRatedMovie, generes] =
+    await Promise.all([nowPlaying(), upComing(), topRated(), movieGeneres()]);
+
+  //Movie Items
+  nowPlayingMovie.forEach((movie, index) => {
+    createElement(movie, index, "nowplaying");
+  });
+  upComingMovie.forEach((movie, index) => {
+    createElement(movie, index, "upcoming");
+  });
+  topRatedMovie.forEach((movie, index) => {
+    createElement(movie, index, "toprated");
+  });
+
+  //Item Slider
+  const initializeSlider = (
+    sliderSelector,
+    rightArrowSelector,
+    leftArrowSelector
+  ) => {
+    const slider = document.querySelector(sliderSelector);
+    const slides = slider.querySelectorAll("li");
+    const slideToShow = 5;
+    const slideWidth = 160;
+    const slideMargin = 25;
+    let currentIndex = 0;
+    let isTransitioning = false;
+
+    const firstClones = Array.from(slides)
+      .slice(0, slideToShow)
+      .map((slide) => slide.cloneNode(true));
+    const lastClones = Array.from(slides)
+      .slice(-slideToShow)
+      .map((slide) => slide.cloneNode(true));
+
+    slider.append(...firstClones);
+    slider.prepend(...lastClones);
+
+    const updateSlider = () => {
+      const offset = -(slideWidth + slideMargin) * (currentIndex + slideToShow);
+      slider.style.transform = `translateX(${offset}px)`;
+    };
+    slider.style.transition = "none";
+    updateSlider();
+
+    document.querySelector(rightArrowSelector).addEventListener("click", () => {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex += slideToShow;
+      if (currentIndex === slides.length) {
+        slider.style.transition = "all 0.5s";
+
+        updateSlider();
+
+        setTimeout(() => {
+          slider.style.transition = "none";
+          currentIndex = 0;
+          updateSlider();
+          isTransitioning = false;
+        }, 500);
+      } else {
+        slider.style.transition = "all 0.5s";
+        updateSlider();
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 500);
+      }
+    });
+
+    document.querySelector(leftArrowSelector).addEventListener("click", () => {
+      if (isTransitioning) return;
+      isTransitioning = true;
+      currentIndex -= slideToShow;
+      if (currentIndex < 0) {
+        slider.style.transition = "all 0.5s";
+
+        updateSlider();
+
+        setTimeout(() => {
+          slider.style.transition = "none";
+          currentIndex = slides.length - slideToShow;
+          updateSlider();
+          isTransitioning = false;
+        }, 500);
+      } else {
+        slider.style.transition = "all 0.5s";
+        updateSlider();
+        setTimeout(() => {
+          isTransitioning = false;
+        }, 500);
+      }
+    });
+  };
+
+  initializeSlider(
+    ".nowplaying ul",
+    "#nowplayingRightArrow",
+    "#nowplayingLeftArrow"
+  );
+
+  initializeSlider(".upcoming ul", "#upcomingRightArrow", "#upcomingLeftArrow");
+
+  initializeSlider(".toprated ul", "#topratedRightArrow", "#topratedLeftArrow");
+
+  //Popup Modal
+  const movieItems = document.querySelectorAll(".movie li");
+  const movieModal = document.querySelector(".modal-overlay");
+
+  movieItems.forEach((movieItem) => {
+    movieItem.addEventListener("click", () => {
+      movieModal.innerHTML = "";
+      movieModal.classList.add("active");
+      const id = parseInt(movieItem.className);
+      const category = movieItem.getAttribute("data-category");
+      let movie;
+      switch (category) {
+        case "nowplaying":
+          movie = nowPlayingMovie.find((movie) => movie.id === id);
+          break;
+        case "upcoming":
+          movie = upComingMovie.find((movie) => movie.id === id);
+          break;
+        case "toprated":
+          movie = topRatedMovie.find((movie) => movie.id === id);
+          break;
+      }
+      if (!movie) {
+        console.error("Movie Not Found");
+        return;
+      }
+      let {
+        adult,
+        backdrop_path,
+        genre_ids,
+        original_language,
+        overview,
+        popularity,
+        poster_path,
+        release_date,
+        title,
+        video,
+        vote_average,
+        vote_count,
+      } = movie;
+
+      const modalContent = document.createElement("div");
+      modalContent.className = "modal-content";
+      adult = adult === false ? "전체관람가" : "18세이상";
+      switch (original_language) {
+        case "en":
+          original_language = "영어";
+          break;
+        case "lv":
+          original_language = "라트비아";
+          break;
+        case "zh":
+          original_language = "중국";
+          break;
+        case "ko":
+          original_language = "한국";
+          break;
+        case "ja":
+          original_language = "일본어";
+          break;
+        case "hi":
+          original_language = "힌두어";
+          break;
+        case "es":
+          original_language = "스페인어";
+          break;
+      }
+      const genreNames = genre_ids.map((id) => {
+        const genre = generes.find((g) => g.id === id);
+        return genre ? genre.name : "Unknown";
+      });
+      modalContent.innerHTML = `
+      <div class="modal-content">
+        <div class="modal-top">
+          <div class="modal-photo">
+            <img
+              src="https://image.tmdb.org/t/p/original/${poster_path}"
+              alt="modal-photo"
+            />
+          </div>
+          <form action="#" method="get">
+            <section class="modal-info">
+              <h1>${title}</h1>
+              <div>
+                <span><em>${release_date} 개봉</em></span>
+                <span><em>${adult}</em></span>
+                <span>인기평점 <em>${parseFloat(vote_average).toFixed(
+                  2
+                )}</em></span>
+                <span>투표자수 <em>${vote_count.toLocaleString()}명</em></span>
+              </div>
+            </section>
+            <section class="modal-button">
+              <a href="#"><i class="fas fa-circle-play"></i>예고편 재생</a>
+              <a href="#"><i class="fas fa-comment"></i>${vote_count.toLocaleString()}</a>
+              <a href="#"><i class="fas fa-share-nodes"></i>공유하기</a>
+            </section>
+            <section class="modal-desc">
+              <p>
+                ${overview}
+              </p>
+            </section>
+            <input type="submit" value="결제하기" />
+          </form>
+        </div>
+        <div class="modal-bottom">
+          <section class="modal-detail">
+            <h1>영화정보</h1>
+            <div>
+              <span>장르</span>
+              <span>${genreNames}</span>
+            </div>
+            <div>
+              <span>언어</span>
+              <span>${original_language}</span>
+            </div>
+            <div>
+              <span>인기점수</span>
+              <span>${popularity.toLocaleString()} / 10000점</span>
+            </div>
+          </section>
+          <section class="modal-poster">
+            <img
+              src="https://image.tmdb.org/t/p/original/${backdrop_path}"
+              alt="modal-poster"
+            />
+          </section>
+          <section class="modal-trailer"></section>
+        </div>
+        <div class="modal-close">
+          <i class="fas fa-xmark"></i>
+        </div>
+      </div>
+      `;
+
+      movieModal.appendChild(modalContent);
+      const modalClose = document.querySelector(".modal-close");
+      modalClose.addEventListener("click", () => {
+        movieModal.classList.remove("active");
+      });
+    });
+  });
+
+  // Main Slider
+  const mainSlider = document.querySelector(".mainSlider");
+
+  nowPlayingMovie.forEach((movie) => {
+    const figure = document.createElement("figure");
+    figure.innerHTML = `<img src="https://image.tmdb.org/t/p/original/${movie.backdrop_path}">`;
+    mainSlider.appendChild(figure);
+  });
+
+  // Fade Effect
+  const figures = mainSlider.querySelectorAll("figure");
+  let currentIndex = 0;
+
+  const showNextSlide = () => {
+    figures[currentIndex].classList.remove("active");
+    currentIndex = (currentIndex + 1) % figures.length;
+    figures[currentIndex].classList.add("active");
+  };
+
+  figures[currentIndex].classList.add("active");
+
+  setInterval(showNextSlide, 3000);
+};
+
+getMovies();
+
+// GNB li Event
+const naviLis = document.querySelectorAll(".gnb > ul > li");
+const submenus = document.querySelectorAll(".submenu");
+const menuBg = document.querySelector(".menu-bg");
+
+naviLis.forEach((naviLi) => {
+  naviLi.addEventListener("mouseover", () => {
+    submenus.forEach((submenu) => {
+      submenu.style.opacity = "1";
+      submenu.style.maxHeight = "300px";
+      menuBg.style.opacity = "1";
+      menuBg.style.maxHeight = "320px";
+    });
+  });
+
+  naviLi.addEventListener("mouseout", () => {
+    submenus.forEach((submenu) => {
+      submenu.style.opacity = "0";
+      submenu.style.maxHeight = "0";
+      menuBg.style.opacity = "0";
+      menuBg.style.maxHeight = "0";
+    });
+  });
+});
+
+// Accordion Event
+const contents = document.querySelectorAll(".accordion .content");
+contents[0].style.display = "block";
+
+const titles = document.querySelectorAll(".title");
+titles.forEach((title) => {
+  title.addEventListener("click", () => {
+    contents.forEach((item) => {
+      item.style.display = "none";
+    });
+    titles.forEach((otherTitle) => {
+      if (otherTitle !== title) {
+        otherTitle.classList.remove("active");
+      }
+    });
+    const content = title.nextElementSibling;
+    if (title.classList.contains("active")) {
+      title.classList.remove("active");
+      content.style.display = "none";
+    } else {
+      title.classList.add("active");
+      content.style.display = "block";
+    }
+  });
+});
+
+// Search Modal
+const searchBtn = document.querySelector(".search-box .fa-magnifying-glass");
+const closeBtn = document.querySelector(".close");
+const modalSearch = document.querySelector(".modal-search");
+
+searchBtn.addEventListener("click", () => {
+  modalSearch.classList.add("active");
+});
+
+closeBtn.addEventListener("click", () => {
+  modalSearch.classList.remove("active");
+});

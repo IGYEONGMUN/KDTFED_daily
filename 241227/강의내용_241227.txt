@@ -1,0 +1,61 @@
+margin : 특정요소 외부(바깥)공간의 여백을 설정하는 속성
+
+margin & padding : 1개
+> 상.하.좌.우 모두 동일하게 1개의 값 적용
+
+margin & padding : A B
+> 상.하의 값은 A로 적용 // 좌.우의 값은 B로 적용
+
+margin & padding : A B C
+> 상의 값은 A로 적용 // 좌.우의 값은 B // 하의 값은 C로 적용
+
+margin & padding : A B C D
+> 상부터 시계방향으로 값을 각각 따로 적용
+
+git-hub : 나중에 할거야!!!
+> commit History
+
+특정 날짜에 해당되는 데이터를 내려받는 방법!!!
+> git-hub 사용방법
+
+- zip
+
+special-git
+
+git remote add origin https://github.com/Divjason/kdtfed-241219.git
+
+git remote -v
+> git-hub > repository (*원격저장소)와 로컬컴퓨터(*내 컴퓨터) 안에 있는 .git (*로컬저장소)가 정상적으로 연결되었는지를 확인할 수 있게 해주는 명령어!!!!
+
+fetch : 서버에 존재하는 데이터를 client측에서 가져와서 사용할 수 있도록 해주는 함수 역할
+
+push : 내 컴퓨터에 존재하는 데이터를 원격저장소로 내보낼 수 있게 해주는 역할
+
+git pull origin master
+
+git fetch : 원격 저장소 내 데이터를 찾아오기전 원격 저장소에 커밋되어진 데이터를 최신데이터 정보로 업데이트를 해주는 명령어
+
+git checkout origin/master 241224
+
+6.Logo&Typography
+
+7.Color
+
+수학적 사고!!!
+
+수학 
+
+03.Friends
+
+F5EFEF
+
+smartAnimate
+> 반드시 레이어 속성 구조가 동일해야합니다.
+> 프레임 및 그룹 등의 레이어의 이름이 동일해야합니다.
+
+> Figma의 Prototype의 가장 최신 기능 중 하나!!!
+
+Prototype > 프레임을 이동한다는 특징!!!
+
+04.Favorites
+

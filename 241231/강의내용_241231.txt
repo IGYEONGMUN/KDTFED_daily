@@ -1,0 +1,150 @@
+*사고는 모두가 주의
+- 보안
+- 사건.사고
+
+*수강생 > 지갑 도난
+
+*외부에서 강의 상담
+
+*웹 표준 : 웹 브라우저에서 구현될 수 있도록 코드를 작성하는 것을 정석에 맞춰서 사용하는 것
+
+*HTML 5.0 :
+Hyper Text Markup Language
+Animation => 3D
+
+*Single Tag (홑태그) => 여는 것과 동시에 닫는 역할을 하는 태그
+- <hr />, <br />, <img />, <input />
+
+*Multi Tag (쌍태그) => 여는 것과 닫는 태그를 별도로 사용하는 태그
+- <hn>
+
+1.h(n = 변수값)
+h1 / h2 / h3 / h4 / h5 / h6
+
+2.p = paragraph
+
+3.hr = Horizontal Ruler
+
+4.br = break
+
+5.a = anchor
+- 기본 속성(*attribute)을 반드시 유지해야하는 태그
+- href = hyper reference
+- target
+
+6.b = bold
+
+7.i = italic
+
+8.List Tags = 목록
+- ol = order list (*부모)
+- ul = unorder list (*부모)
+- li = list (*자식)
+
+9.Table Tags = 테이블 표를 만들기 위한 태그
+> 행 row : 가로 줄
+> 열 column : 세로 줄
+
+- table : 테이블을 생성하고자 할 때 사용하는 태그
+- tr : table row (*테이블의 행을 생성할 때)
+- th : table heading (*생성된 열 안에서 대표 문구)
+- td : table data (*생성된 행 안에 열을 만들고자 할 때)
+- thead : 테이블 태그 내 머리
+- tbody : 테이블 태그 내 몸통
+- tfoot : 테이블 태그 내 다리
+- colgroup : 테이블 내 열의 그룹화
+- col : colgroup 안에서 몇 번째 열을 지칭해서 가져올 것인지를 결정
+- caption : table 내 전용 타이틀 목록을 지정하고자 할 때
+- colspan : 테이블 내 열을 병합하고자 할 때
+- rowspan : 테이블 내 행을 병합하고자 할 때
+
+10.img : 이미지를 불러오고자 할 때
+- src => source => a태그의 href와 유사한 기능을 갖고 있는 속성
+- alt => alternate (*대체재)
+- scr(x)
+
+11.audio
+- src => audio 소스 파일을 가져올 수 있도록 하는 속성
+- controls => audio 컨트롤러를 표기할 수 있도록 해주는 속성
+- autoplay => audio 자동재생을 제어할 수 있게 해주는 속성
+- loop => 무한으로 audio 재생을 하도록 해주는 속성
+
+12.video
+- src => video 소스 파일을 가져올 수 있도록 하는 속성
+- controls => video 컨트롤러를 표기할 수 있도록 해주는 속성
+- autoplay => video 자동재생을 제어할 수 있게 해주는 속성
+- loop => 무한으로 video 재생을 하도록 해주는 속성
+- muted => 음소거 // 최근 웹 브라우저들의 정책 => 과도한 멀티미디어 소스 광고 규제가 강화!!!!
+
+13.form = 입력양식 태그
+- form : 입력양식 태그를 사용하겠다는 선언과도 같은 태그
+> "서버"와의 소통 && "사용자"와의 관계성도 중요 
+> action : 사용자가 입력한 값을 보낼 서버의 주소
+> method : 클라이언트와 서버가 통신을 하는 방법
+- get : 클라이언트가 서버에게 내가 원하는 값을 가져와!!!
+- post : 클라이언트가 사용자에게 특정값을 받아서 서버의 공간에 해당값을 업데이트 시키는 역할
+
+사용자가 웹 브라우저 내 상단 주소창을 통해서 특정 url을 입력하는 행위는 사용자가 해당 페이지로 이동한다는 의미 x
+
+해당 서버에게 사용자인 나에게 해당 URL에 매칭되는 웹 페이지를 나에게 가져다 줘!!! 를 요청하는 행위를 의미 o
+
+- input
+text
+password
+submit
+reset
+button
+range
+date
+file
+checkbox
+radio
+image
+
+- label
+> for 속성 => 속성값 = input 태그의 id 속성의 값과 동일해지는 순간 마법 => label & input => 일심동체
+
+- textarea : 댓글, 코멘트 등의 사용자의 값을 입력받고자 할 때
+
+- select : 여러가지이 선택 사항 중 한가지를 선택할 수 있도록 해주는 태그
+
+- option : select 태그 내 여러개의 옵션값 중 하나로 구성하고자 할 때 사용하는 태그
+
+
+14.공간분할태그 :
+- block : 태생부터 욕심이 많은 욕심쟁이
+> 무조건 1개의 행에 본인만 사용할 수 있음
+> 굳이 너비(width)값을 세팅하지 않아도 됨
+
+- inline : 태생부터 욕심이 없는 이타주의 성격
+> 나의 너비가 oopx안되니까 공간이 남은 영역은 다른 태그들과 사이좋게 같이 사용할 수 있음
+
+> 두개의 공간분할태그의 가장 큰 차이점
+
+1) 수평 정렬 방식이 상이함
+2) margin, padding 적용 방식이 상이함
+> block 태그는 상.하.좌.우 모두 margin, padding
+> inline 태그는 특별한 경우가 아니라면, margin, padding 좌우측만 적용가능 // 부모요소에 flex가 적용되어 있는 경우
+
+15.Semantic태그
+
+*"중첩"목록 > 목록 안에 또 다른 목록
+
+> heading : 머리글 대표
+
+Dummy Text => 의미가 없는 문자열의 집합
+> lorem
+
+*CSS 3.0 :
+Cascading Style Sheet
+동적인 페이지 구현 기능
+
+> 언어 - 시대 (X)
+> 시대 - 언어 (O)
+
+업에 대한 자부심
+
+개발 => creative (*무 => 유)
+// 언어에 대한 이해
+// 문제해결 논리적 사고
+// 필수 문법

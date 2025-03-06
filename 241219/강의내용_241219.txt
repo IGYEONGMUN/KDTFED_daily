@@ -1,0 +1,223 @@
+1.Web Editor 세팅
+- Visual Studio Code 초기화
+> C > User > .vscode 삭제
+> C > User > AppData > Roaming > Code 삭제
+> 제어판 > VSCODE 제거
+
+- Visual Studio Code 재설치
+> 추가 작업 선택 영역
+> Code로 열기 기능 사용 : 내가 현재 작업하고자 하는 폴더를 Root 폴더로 설정한 상태에서 바로 vscode를 활성화할 수 있게 해주는 기능을 사용하겠다!!!
+
+kdtFed : Cammel
+kdt_fed : Sneak
+Kdtfed : Hungarian
+> 파일명 // 변수명
+
+GUI 방식으로 작업환경 세팅
+- Graphic User Interface 
+
+CLI 방식으로 작업환경 세팅
+- Command Line Interface
+> cd : Change Directory
+> mkdir : Make Directory
+> cd .. : 현재 위치한 Directory에서 한 단계 위 폴더로 이동할 수 있게 해주는 명령어
+> code . : vscode open
+
+VS code 2가지 영역 설정
+1) 환경설정 : ctrl + ,
+- Tab Size : 기본 들여쓰기 정도 설정 (num : 2)
+- Word Wrap : 가로로 길게 작성된 문장을 자동으로 세로 정렬시켜주는 설정 (on)
+- Mouse Wheel Zoom : 현재 보고있는 웹에디터를 줌인 / 줌아웃 해줄 수 있는 설정
+- emmet > variables > lang > ko : 현재 작업중인 문서의 모국어를 한글로 설정
+
+2) 확장앱 설정
+- Korean Language Pack
+- Material Icon Theme
+- Live Server : alt + L + O
+- Indent rainbow
+- Auto Rename Tag
+- HtmlTagWrap
+- Html to CSS autocompletion
+- Html css support
+- CSS peak
+- Turbo JS
+- Live Sass Compiler
+- Figma
+- fontawesome
+- One Dark pro
+- Power Mode
+- Prettier
+> Default Formatter : Prettier 선택
+> Format On Save : Check
+
+git : 
+- 형상(형태 & 상태) 기억 관리 툴
+- 버전 관리 툴
+- 로컬 컴퓨터
+
+gitHub
+- git소유주 정보 : 데이터 업로드가 되어지는 위치 다르게 설정
+
+*1개의 제품 혹은 서비스를 개발
+- 혼자서 작업
+> 메인 + 서브 + 상세페이지
+
+=> 레포트 ver1
+=> 레포트 ver2
+=> 레포트 ver3
+
+
+- 팀 형태로 협업 
+> 메인 A
+> 서브 B
+> 상세 C
+
+=> 1개의 파일로 결국 병합
+> 과정. 방법?
+
+=> 최종적인 병합단계가 아니라고 하더라도 중간단계마다 데이터 취합해서 1개의 파일로 정리!!
+
+- 제어판 > 자격증명관리자 설정
+- Windows 자격 증명 > 일반자격증명
+
+git -v
+git config --list
+
+여러분들의 컴퓨터에서 어떤 폴더 혹은 어떤 프로젝트에서든지 공통적으로 영향을 미칠 수 있도록 세팅하고자 한다면, "전역" 환경 변수 설정!!!
+
+global (전역) <-> local (지역)
+
+cmd (*관리자 권한 설정 모드 변경)
+
+https://github.com/
+
+name : Divjason
+email : sejinpark@tcocs.com
+
+git config --global user.name "Divjason"
+git config --global user.email "sejinpark@tcocs.com"
+git config --list
+
+git <-> git-hub
+: repository
+
+
+로컬 컴퓨터 어떤 프로젝트 가정!!!
+> 파일 untracked
+> staging area 공간 (*임시대기 공간) unmodified
+> 파일 commited (*repository 생성.관리)
+
+*개발자가 버전관리 // 1~10데이터를 몇회에 나눠서 버전관리?
+- 1번에 데이터 1개의 버전 관리
+- 3 / 3 / 4 버전 관리
+
+> 파일 
+
+*현재 개발자가 작업중인 폴더 : Working Directory
+
+컴퓨터 > 여러 개발자들이 각자의 모니터 / 마우스 / 키보드를 가지고 공동으로 1대의 컴퓨터를 공유하면서 사용!!
+
+> 내가 접속하고자 하는 폴더 // 파일
+> 터미널 
+
+git init
+
+git add .
+
+git status
+
+git remote add origin https://github.com/Divjason/kdtfed-241219.git
+
+git remote -v
+
+git commit -m "241219"
+
+git push origin master
+
+> Branch
+- 1개의 Repository에는 복수의 Branch
+
+> 4인 1조 완성
+1명 : PM
+3명 : TM
+
+Detail
+Main // Login // Delivery
+
+현재 git-hub에 commit된 데이터를 다른 컴퓨터에서 내려받아서 사용하는 방법
+
+1.git-hub Repository 우측 상단, Code 녹색버튼 클릭 후 Download Zip > Zip파일로 다운로드 하는 방법
+
+2.현재 git-hub Repository Clone(*복제)하는 방법
+clone-git
+
+git clone https://github.com/Divjason/kdtfed-241219.git
+
+git pull origin master
+
+pull-git
+
+window + R
+sysdm.cpl
+
+시스템속성 > 고급 > 환경변수 > 시스템변수 > Path > 편집 > 새로만들기 > 찾아보기 > 유저이름 > AppData > 확인
+
+레이어패널 : 현재 작업중인 레이어간 계층 구조 확인
+캔버스 : 실제 UI작업을 진행할 수 있는 그림판 공간
+- 작업 단위 : Frame
+속성패널 : 레이어 안에 있는 컨텐츠들의 세부적인 속성 정보를 입력.수정.삭제 등을 할 수 있는 영역
+
+UI/Mobile
+
+
+기기별 대표 화면 사이즈
+- 1440px = 12 * 120
+- 1920px = 12 * 160
+
+- 420px = 12 * 35
+- 360px = 12 * 30
+
+=> 10과 가까운 숫자가운데 최대공약수를 가장 많이 가지고 있는 숫자
+1 12
+2 6
+3 4
+
+=> 반응형 웹페이지
+- desktop 
+- mobile
+
+> 요즘엔 많이 보기 힘든 화면 사이즈
+- 1280px = 12 * 106
+
+390px
+왼쪽 여백 : 35px
+오른쪽 여백 : 35px
+> 70px
+
+실제 컨텐츠를 사용할 수 있는 공간 : 320px
+> 컬럼 간 간격 : 4px
+> 전체 총 간격 : 5 * 4 = 20px
+
+진짜 컨텐츠를 사용할 수 있는 공간 :
+320 - 20 = 300
+
+50px
+
+레이아웃 그리드
+- 개인프로젝트
+- 팀프로젝트
+
+프론트엔드 영역 공부
+> 화면구성
+> 레이아웃 그리드
+
+Autolayout
+
+
+
+
+
+
+
+
+

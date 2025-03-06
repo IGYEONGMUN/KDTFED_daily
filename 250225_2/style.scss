@@ -1,0 +1,139 @@
+@import "./styles/reset.scss";
+@import "./styles/variables.scss";
+
+html {
+  font-size: 62.5%;
+}
+body {
+  height: 3000px;
+  font-size: 1.6rem;
+  background: map-get($map: $color, $key: dark);
+  color: map-get($map: $color, $key: light);
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  header {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    background: map-get($map: $color, $key: dark);
+
+    nav {
+      display: flex;
+      width: 900px;
+      height: 100%;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      .logo {
+        img {
+          width: auto;
+          height: 30px;
+        }
+      }
+      .search-box {
+        i {
+          font-size: 1.8rem;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .gnb {
+    .menu-bg {
+      width: 100%;
+      height: 320px;
+      position: fixed;
+      top: 0;
+      border: 1px solid #f00;
+      background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 1),
+        rgba(0, 0, 0, 0.4)
+      );
+      z-index: 2;
+    }
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    display: flex;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    & > ul {
+      width: 900px;
+      padding: 0 10px;
+      display: flex;
+      justify-content: space-between;
+      & > li > a {
+        display: inline-block;
+        width: 100px;
+        text-align: center;
+        font-weight: bold;
+        position: relative;
+        transition: all 0.3s;
+        margin-bottom: 10px;
+        padding-bottom: 2px;
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0%;
+          height: 2px;
+          background: map-get($map: $color, $key: button);
+          transform-origin: center;
+          transform: translateX(-50%);
+          margin-left: 50%;
+          transition: width 0.3s;
+        }
+        &:hover {
+          color: map-get($map: $color, $key: button);
+          &::after {
+            width: 100%;
+          }
+        }
+      }
+      .submenu {
+        position: absolute;
+        top: 40px;
+        width: 100px;
+        text-align: center;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        & > li {
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+
+  .mainSlider {
+    width: 100%;
+    height: 600px;
+    position: relative;
+    figure {
+      position: absolute;
+      width: 100%;
+      height: 800px;
+      top: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      &.active {
+        opacity: 1;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+    }
+  }
+}

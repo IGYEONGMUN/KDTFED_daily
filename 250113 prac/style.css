@@ -1,0 +1,23 @@
+@import url(./styles/reset.css);
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Playwrite+AU+SA:wght@100..400&family=Poiret+One&display=swap");
+
+@import url(./styles/variables.css);
+body {
+  main {
+    h1 {
+      font-family: var(--orbitron-font-style);
+      border: 1px solid #f00;
+      text-align: center;
+    }
+    #navigation {
+      width: 500px;
+      position: absolute;
+      border: 1px solid #f00;
+      display: flex;
+      left: 50%;
+      transform: translate(-50%);
+      justify-content: center;
+    }
+  }
+}
