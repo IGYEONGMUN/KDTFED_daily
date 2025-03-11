@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+canvas {
+  background: #ccc;
+}
+
+#container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#container #toolbar {
+  width: 100%;
+  height: 70px;
+  background: #222;
+  color: #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+#container #toolbar > div * {
+  margin-right: 5px;
+}
+#container #toolbar label {
+  font-size: 1.8rem;
+}
+#container #toolbar input[type=number] {
+  padding: 4px 10px;
+}
+#container #toolbar button {
+  background: #ececec;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}/*# sourceMappingURL=style.css.map */
