@@ -1,0 +1,35 @@
+$color: (
+  light: #fff,
+  dark: #000,
+  accent: crimson,
+  gray: #eee,
+  button: #ccc,
+);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  width: 500px;
+  margin: 80px auto;
+  section {
+    background: map-get($map: $color, $key: gray);
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 4px;
+    .buttons {
+      display: flex;
+      gap: 10px;
+      button {
+        padding: 4px 12px;
+        background: map-get($map: $color, $key: button);
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+    }
+  }
+}

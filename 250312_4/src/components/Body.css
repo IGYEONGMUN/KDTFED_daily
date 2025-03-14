@@ -1,0 +1,17 @@
+.counterApp {
+  border: 1px solid #ccc;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .buttons {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    button {
+      width: 100%;
+      cursor: pointer;
+    }
+  }
+}
