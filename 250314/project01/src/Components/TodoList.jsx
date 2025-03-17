@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import TodoItem from "./TodoItem";
+// import { TodoContext } from "../App";
+import { TodoStateContext } from "../App";
 
-const TodoList = ({ todo, onUpdate, onDelete }) => {
+const TodoList = () => {
+  const todo = useContext(TodoStateContext);
+
   const [search, setSearch] = useState("");
   const onChangeSearch = (e) => {
     setSearch(e.target.value);
@@ -15,9 +19,25 @@ const TodoList = ({ todo, onUpdate, onDelete }) => {
         );
   };
 
+  const analyzeTodo = useMemo(() => {
+    const totalCount = todo.length;
+    const doneCount = todo.filter((it) => it.isDone).length;
+    const notDoneCount = totalCount - doneCount;
+    return {
+      totalCount,
+      doneCount,
+      notDoneCount,
+    };
+  }, [todo]);
+
+  const { totalCount, doneCount, notDoneCount } = analyzeTodo;
+
   return (
     <div className="TodoList">
       <h4>Todo List</h4>
+      <div>총개수 : {totalCount}</div>
+      <div>완료된 할 일 : {doneCount}</div>
+      <div>아직 완료하지 못한 할 일 : {notDoneCount}</div>
       <input
         className="searchbar"
         type="text"
@@ -34,8 +54,8 @@ const TodoList = ({ todo, onUpdate, onDelete }) => {
           <TodoItem
             key={it.id}
             {...it}
-            onUpdate={onUpdate}
-            onDelete={onDelete}
+            // onUpdate={onUpdate}
+            // onDelete={onDelete}
           />
         ))}
       </div>
