@@ -111,6 +111,12 @@ body.nav_active nav {
 #fullpage .section#sec0 {
   background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
 }
+#fullpage .section#sec0 .inner svg,
+#fullpage .section#sec0 .inner img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}
 #fullpage .section#sec1 {
   background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
 }

@@ -132,7 +132,7 @@ const Editor = ({ initData, onSubmit }) => {
           <TextArea
             onChange={handleChangeContent}
             value={state.content}
-            placeholder="하루어땟음"
+            placeholder="오늘 하루 어땠나요?"
           />
         </EditorInfo>
       </EditorSection>

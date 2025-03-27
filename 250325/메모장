@@ -1,0 +1,17 @@
+npm create-react-app .--template typescript
+타입스크립트
+
+
+useState
+useRef
+useEffect
+useReducer
+useCallback
+useContext
+useParams
+useSearchParams
+
+
+------------------------------------------framermotion
+useMotionValue
+useTransform

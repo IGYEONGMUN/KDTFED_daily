@@ -107,6 +107,16 @@ body {
     }
     &#sec0 {
       background-image: linear-gradient(120deg, #f093fb 0%, #f5576c 100%);
+      .inner {
+        svg,
+        img {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+        }
+        .svg2 {
+        }
+      }
     }
     &#sec1 {
       background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);

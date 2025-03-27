@@ -1,0 +1,6 @@
+타입스크립트
+node -v
+npm -v
+npm init // npm init -y
+npm i @types/node -g (-g :로컬컴퓨터한테도 알려줌)
+프레이머모션할때도 npm i @types/styled-components ->타입스크립트 기반으로 할거야
