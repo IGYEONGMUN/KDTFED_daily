@@ -1,0 +1,4 @@
+npm create vite@latest
+cd 해서 만든폴더로 가기 code .
+npm i
+npm run dev

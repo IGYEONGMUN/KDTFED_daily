@@ -1,0 +1,3 @@
+npm create vite@latest
+npm i styled-components react-router-dom styled-reset
+npm i @types/styled-components -D @types/react-router-dom -D

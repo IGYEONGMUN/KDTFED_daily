@@ -1,0 +1,32 @@
+npm init -y
+npm i @types/node -g
+npm i typescript -g
+npm i tsx
+npm i tsx -g
+npm i undici-types
+tsc --init
+tsconfig.json 다 지우고 수동설정
+tsc - 컴파일링, dist안에
+tsx src/index.ts - 컴파일링 후 즉시실행
+
+package.json에 
+"ts_node":"tsc && tsx src/index.ts"  만들고
+npm run ts_node
+
+----------------------------------
+
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "NodeNext",
+    "moduleDetection": "force",
+    "moduleResolution": "nodenext",
+    "outDir": "dist",
+    "strict": true
+  },
+  "include": ["src"]
+}
+
+
+
+

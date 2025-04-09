@@ -1,0 +1,17 @@
+npm create vite @latest 
+npm i
+npm install styled-components ( styledcomponents 홈페이지 documentation - installation에 있음)
+npm i @types/styled-components -D
+npm i react-router-dom
+npm i @types/react-router-dom -D
+npm i styled-reset
+npm run dev
+------------
+package.json
+dependencies
+devdependencies-개발자를위한,ex @types - 타입스크립트는 개발자를 위한거니까
+
+----------------------
+
+styled.d.ts -> 타입정의해야함
+내가 만들고자 하는 테마 컬러의 타입을 정의하는 공간

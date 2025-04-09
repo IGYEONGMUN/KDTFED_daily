@@ -1,0 +1,5 @@
+json-server--watch db.json 
+또는
+npx json-server db.json
+걍 밑에꺼쓰는게 좋을듯
+제이슨서버 홈페이지 참고
