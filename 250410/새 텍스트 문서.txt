@@ -1,0 +1,5 @@
+npm install redux
+
+react-redux설치 -리덕스를 리액트에 맞춰서 사용할수 있는 훅 만들어놓음
+npm install react-redux
+

@@ -1,0 +1,8 @@
+json-server--watch db.json 
+또는
+npx json-server db.json
+걍 밑에꺼쓰는게 좋을듯
+제이슨서버 홈페이지 참고
+
+ npm i json-server@0.17.0
+쿼리값 찾아올때 베타버전에서 안되서 다운그레이드
