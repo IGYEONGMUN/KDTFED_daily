@@ -1,0 +1,12 @@
+리덕스 라이브러리 업그레이드버전
+
+createStore -< configureStore
+
+전개연산자 구문 비효율성
+-살짝개선
+타입->함수처리
+
+
+*RTK라고 부름
+npm uninstall redux
+npm install @reduxjs/toolkit

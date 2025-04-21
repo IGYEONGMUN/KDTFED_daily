@@ -1,0 +1,11 @@
+npm create vite@latest
+npm i react-router-dom
+npm i styled-components
+npm i styled-reset
+npm i redux@4.2.1
+npm i redux-thunk --force
+npm i react-redux --force
+npm i @redux-devtools/extension --force
+액션스 리듀서스 따로 폴더로 관리해야함 - 미들웨어를 거쳐가기때문에
+ npm i axios --force
+npm i react-multi-carousel --force

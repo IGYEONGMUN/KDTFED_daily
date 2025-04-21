@@ -1,0 +1,9 @@
+npm i react-router-dom
+npm i styled-components
+npm i styled-reset
+npm install react-bootstrap bootstrap
+
+컨텐츠 소스의 url 경로가 절대 바뀌어서는 안되는경우 ex파비콘 + 동영상 -> public
+(인코딩 디코딩단계에서 문제가 없어야하기때문)
+
+앱을 만들때 순수하게 내부에서만 사용할 이미지 -> src(fcp단계 로딩시간때문)

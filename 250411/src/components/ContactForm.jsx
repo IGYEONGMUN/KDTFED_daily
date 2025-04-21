@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { addContact } from "../redux/reducer";
 
 const Container = styled.div`
   & input[type="text"] {
@@ -22,30 +23,27 @@ const Container = styled.div`
 const formNameChange = () => {};
 
 const ContactForm = () => {
-  const [name, setName] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
 
   const dispatch = useDispatch();
 
-  const addContact = (e) => {
+  const addContactHandler = (e) => {
     e.preventDefault();
     // 액션객체안에 타입부터정의하고
-    dispatch({
-      type: "ADD_CONTACT",
-      // 페이로드 안에도 객체형태로보냄 네임과 전화번호는 형제요소라 프랍스로 못보냄
-      payload: {
-        name,
-        phoneNumber,
-      },
-    });
+    if (!name || !phoneNumber) return alert(" 정상적인 값을 입력해주세요");
+    dispatch(addContact({ name, phoneNumber }));
+    setName("");
+    setPhoneNumber("");
   };
 
   return (
     <Container>
-      <Form onSubmit={addContact}>
+      <Form onSubmit={addContactHandler}>
         <Form.Group className="mb-3" controlId="formBasicName">
           <Form.Label>이름</Form.Label>
           <Form.Control
+            value={name}
             type="text"
             placeholder="이름을 입력해주세요"
             onChange={(e) => setName(e.target.value)}
@@ -54,6 +52,7 @@ const ContactForm = () => {
         <Form.Group className="mb-3" controlId="formBasicContact">
           <Form.Label>전화번호</Form.Label>
           <Form.Control
+            value={phoneNumber}
             type="text"
             placeholder="전화번호를 입력해주세요"
             onChange={(e) => {

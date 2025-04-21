@@ -1,0 +1,27 @@
+>creatAsyncThunk : 함수
+
+기존 redux 문법 관련 변경사항
+1.Redux > store에서 사용했었던 함수명칭 변경
+-createStore => configureStore
+-action 객체를 만들때 매번 type을 통해서 식별 => 함수형태로 바꾸고자 하는 목적
+-기존 전개연산자 구문을 사용했었던 문법 => 사용하지 않기 위한 목적
+-extension 확장 프로그램 설치시 불필요하게 세팅했던 것을 굳이 하지 않아도 될 수 있도록 하기 위해서
+
+2.configureStore > reducer
+-reduct Toolkit > createSlice라는 함수호출
+-객체를 인자값 = > 3개의 값을 적용
+-리듀서 이름, 초기값, type에 따른 case 를 함수로 만들어서 선언
+
+3.store > createStore => configureStore교체
+
+4.기존 리덕스의 약점이었던 비동기처리를 할 수 없었기 때문에 action 객체생성시 미들웨어를 거쳤던 그
+과정을 보다 효율적으로 개선처리
+기존에는 action 객체 파일 따로, reducer 함수 파일 따로였는데 
+slice 파일로 하나로 합쳐서 관리
+->createAsyncThunk함수탄생
+
+5. createAsyncThunk 특징
+promise를 반환하는 형태를 띄고있음 -> 선언부 & 실행부 두개로 나눠서 관리
+선언부에서는 기존 action 파일에서 비동기적으로 처리했었던 데이터를 직접 입력
+실행부에서는 바닐라 자바스크립트에서 promise가 작동되었던 원리를 그대로 벤치마킹해서 pending / fulfilled / rejectd 단계에서 뭐할지
+정의 가능

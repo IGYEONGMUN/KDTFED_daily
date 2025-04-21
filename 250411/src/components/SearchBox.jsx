@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Row, Col, Button, Form } from "react-bootstrap";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
+import { searchByUserName } from "../redux/reducer";
 
 const Contaier = styled.div`
   & input[type="text"] {
@@ -26,11 +27,7 @@ const SearchBox = () => {
 
   const searchByName = (e) => {
     e.preventDefault();
-    dispatch({
-      type: "SEARCH_BY_USERNAME",
-      // keyword 키에 keyword값 보냄 -이름 같음- 생략가능
-      payload: { keyword },
-    });
+    dispatch(searchByUserName({ keyword }));
   };
   return (
     <Contaier>
