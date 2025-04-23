@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import {
   useParams,
   useLocation,
@@ -7,6 +6,8 @@ import {
   useMatch,
 } from "react-router-dom";
 import styled from "styled-components";
+import { useQuery } from "@tanstack/react-query";
+import { fetchCoinInfo, fetchCoinPrice } from "../api";
 
 const Container = styled.div`
   width: 100%;
@@ -147,36 +148,48 @@ interface PriceData {
 
 const Coin = () => {
   // 현재 코인아이디 객체 안에 타입은 스트링이거나 언디파인드임 근데 둘다 적용해봐도 안됨 -> 오류메세지 확인해보니 애니타입도 넣어야 한다고함
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
   const { coinId } = useParams<IRouteParams | any>();
   // 링크를 거치지 않고 유즈로케이션 값으로 타이틀을 설정하려고 하면 문제가생김 ex 각각 비트코인을 즐겨찾기 해놓고 그 사이트를 다시 들어가면 타이틀 오류나기때문
   const { state } = useLocation() as ILocationState;
-  const [info, setInfo] = useState<InfoData>();
-  const [priceInfo, setPriceInfo] = useState<PriceData>();
+  // const [info, setInfo] = useState<InfoData>();
+  // const [priceInfo, setPriceInfo] = useState<PriceData>();
   // 유즈매치로 불러온 객체의 end값이 true면 그 페이지에 도착했구나 판단
   const priceMatch = useMatch("/:coinId/price");
   const chartMatch = useMatch("/:coinId/chart");
   // console.log(priceMatch, chartMatch);
 
-  useEffect(() => {
-    // 고차함수/선언호출 같이씀
-    (async () => {
-      // 얘도 고차함수로 변환한거임
-      const infoData = await (
-        await fetch(
-          `https://my-json-server.typicode.com/Divjason/coinlist/coins/${coinId}`
-        )
-      ).json();
-      const priceData = await (
-        await fetch(
-          `https://my-json-server.typicode.com/Divjason/coinprice/coinprice/${coinId}`
-        )
-      ).json();
-      setInfo(infoData);
-      setPriceInfo(priceData);
-      setLoading(false);
-    })();
-  }, [coinId]);
+  // useEffect(() => {
+  //   // 고차함수/선언호출 같이씀
+  //   (async () => {
+  //     // 얘도 고차함수로 변환한거임
+  //     const infoData = await (
+  //       await fetch(
+  //         `https://my-json-server.typicode.com/Divjason/coinlist/coins/${coinId}`
+  //       )
+  //     ).json();
+  //     const priceData = await (
+  //       await fetch(
+  //         `https://my-json-server.typicode.com/Divjason/coinprice/coinprice/${coinId}`
+  //       )
+  //     ).json();
+  //     setInfo(infoData);
+  //     setPriceInfo(priceData);
+  //     setLoading(false);
+  //   })();
+  // }, [coinId]);
+
+  const { isLoading: infoLoading, data: infoData } = useQuery<InfoData>({
+    queryKey: ["coinInfo", coinId],
+    queryFn: () => fetchCoinInfo(coinId),
+  });
+
+  const { isLoading: priceLoading, data: priceData } = useQuery<PriceData>({
+    queryKey: ["coinPrice", coinId],
+    queryFn: () => fetchCoinPrice(coinId),
+  });
+
+  const loading = infoLoading || priceLoading;
 
   return (
     <Container>
@@ -193,23 +206,20 @@ const Coin = () => {
           <Overview>
             <OverviewItem>
               <span>Rank</span>
-              <span>{info?.rank}</span>
+              <span>{infoData?.rank}</span>
             </OverviewItem>
             <OverviewItem>
               <span>Symbol</span>
-              <span>{info?.symbol}</span>
+              <span>{infoData?.symbol}</span>
             </OverviewItem>
             <OverviewItem>
               <span>isActive</span>
-              <span>{info?.is_active ? "Yes" : "No"}</span>
+              <span>{infoData?.is_active ? "Yes" : "No"}</span>
             </OverviewItem>
           </Overview>
           <Description>
-            Information of {info?.type} : Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Provident magni soluta at tempora magnam dolor
-            fugiat adipisci veniam natus quam officia eligendi praesentium harum
-            aperiam neque sequi incidunt, maxime suscipit!Lorem ipsum dolor sit
-            amet consectetur adipisicing elit. Provident magni soluta at tempora
+            Information of {infoData?.type} : Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Provident magni soluta at tempora
             magnam dolor fugiat adipisci veniam natus quam officia eligendi
             praesentium harum aperiam neque sequi incidunt, maxime
             suscipit!Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -218,16 +228,20 @@ const Coin = () => {
             sequi incidunt, maxime suscipit!Lorem ipsum dolor sit amet
             consectetur adipisicing elit. Provident magni soluta at tempora
             magnam dolor fugiat adipisci veniam natus quam officia eligendi
-            praesentium harum aperiam neque sequi incidunt, maxime suscipit!
+            praesentium harum aperiam neque sequi incidunt, maxime
+            suscipit!Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Provident magni soluta at tempora magnam dolor fugiat adipisci
+            veniam natus quam officia eligendi praesentium harum aperiam neque
+            sequi incidunt, maxime suscipit!
           </Description>
           <Overview>
             <OverviewItem>
               <span>Total Supply</span>
-              <span>{priceInfo?.total_supply}</span>
+              <span>{priceData?.total_supply}</span>
             </OverviewItem>
             <OverviewItem>
               <span>Max Supply</span>
-              <span>{priceInfo?.max_supply}</span>
+              <span>{priceData?.max_supply}</span>
             </OverviewItem>
           </Overview>
           <Tabs>
